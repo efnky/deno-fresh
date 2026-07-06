@@ -7,6 +7,7 @@ RUN deno task build
 FROM denoland/deno:2.1.4
 WORKDIR /app
 COPY --from=builder /app .
+RUN deno cache main.ts
 EXPOSE 8080
 USER deno
 CMD ["deno", "run", "-A", "main.ts"]
